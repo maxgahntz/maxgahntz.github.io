@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maximilian Gahntz</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Fraunces (display), Inter (body) -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================================
+   DESIGN TOKENS (locked direction)
+========================================================== */
+:root {
+  --cream:        #F2EAD6;
+  --warm-white:   #FAF6EC;
+  --fg:           #1C1812;
+  --fg-soft:      #6b6258;
+  --rule:         rgba(28,24,18,0.12);
+  --accent:       #D84818;     /* red-orange */
+  --accent-ink:   #FBEFDF;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--cream);
+  color: var(--fg);
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+/* =========================================================
+   NAV
+========================================================== */
+nav.top {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 28px 44px;
+  z-index: 3;
+}
+nav.top ul {
+  display: flex;
+  list-style: none;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+nav.top a {
+  text-decoration: none;
+  color: var(--accent-ink);
+}
+nav.top a:hover { opacity: 0.7; }
+
+/* =========================================================
+   HERO
+========================================================== */
+.hero {
+  position: relative;
+  min-height: 100vh;   /* fills the whole screen on opening */
+  min-height: 100svh;  /* same, allowing for phone browser toolbars */
+  background: var(--accent);
+  color: var(--accent-ink);
+  display: flex;
+  align-items: flex-end;
+  padding: 104px 44px 80px;
+}
+.hero .inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+}
+.hero .name {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(56px, 10vw, 128px);
+  line-height: 0.93;
+  letter-spacing: -0.025em;
+  margin: 0 0 28px;
+  font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 0;
+}
+.hero .name .hi-big {
+  display: block;
+  font-size: clamp(96px, 15vw, 192px);
+  line-height: 0.95;
+  margin-bottom: 10px;
+}
+.hero .name .im-name {
+  display: block;
+  font-size: clamp(44px, 7vw, 92px);
+  line-height: 1;
+}
+.hero .tagline {
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.55;
+  max-width: 56ch;
+  text-wrap: pretty;
+  margin: 0;
+  opacity: 0.94;
+}
+.hero .scroll-hint {
+  position: absolute;
+  left: 44px;
+  bottom: 28px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+/* =========================================================
+   GENERIC BLOCK
+========================================================== */
+section.block {
+  padding: 110px 44px;
+}
+section.block .wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.bg-cream      { background: var(--cream); }
+.bg-warm-white { background: var(--warm-white); }
+
+h2.section-title {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin: 0 0 36px;
+  font-variation-settings: "opsz" 144, "SOFT" 40;
+}
+p.section-intro {
+  max-width: 60ch;
+  font-size: 17px;
+  color: var(--fg-soft);
+  margin: -18px 0 44px;
+}
+
+/* =========================================================
+   ABOUT — photo fills the left edge, text right.
+   On phones the text comes first and the photo sits below it.
+========================================================== */
+section.block.about { padding: 0; }
+section.about .wrap {
+  display: grid;
+  grid-template-columns: min(41.67vw, 620px) minmax(0, 1fr);
+  max-width: none;
+  margin: 0;
+}
+.about .photo {
+  grid-column: 1;
+  grid-row: 1;
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+}
+.about .photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+}
+.about .photo figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 40px 16px 14px 44px;
+  font-size: 11.5px;
+  letter-spacing: 0.02em;
+  color: var(--accent-ink);
+  background: linear-gradient(to bottom, rgba(28,24,18,0), rgba(28,24,18,0.6));
+}
+.about .text {
+  grid-column: 2;
+  grid-row: 1;
+  padding: 110px 44px 110px 72px;
+}
+.about .text p {
+  font-size: 16.5px;
+  line-height: 1.65;
+  margin: 0 0 16px;
+  max-width: 58ch;
+}
+
+/* =========================================================
+   WRITING / SPEAKING — three collapsible categories
+========================================================== */
+details.cat { border-top: 1px solid var(--rule); }
+details.cat:last-of-type { border-bottom: 1px solid var(--rule); }
+
+details.cat > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 22px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+details.cat > summary::-webkit-details-marker { display: none; }
+
+details.cat > summary h3 {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: -0.01em;
+  margin: 0;
+  font-variation-settings: "opsz" 72, "SOFT" 40;
+}
+details.cat > summary .chevron {
+  transition: transform 0.25s ease;
+  color: var(--accent);
+}
+details.cat[open] > summary .chevron { transform: rotate(180deg); }
+
+details.cat .cat-body { padding: 4px 0 28px; }
+
+.pub {
+  display: grid;
+  grid-template-columns: 72px 1fr auto;
+  gap: 28px;
+  padding: 16px 0;
+  align-items: baseline;
+  border-top: 1px solid var(--rule);
+}
+.pub:first-child, .cat-note + .pub { border-top: 0; }
+.cat-note {
+  font-size: 14px;
+  color: var(--fg-soft);
+  margin: 0 0 8px;
+  max-width: 60ch;
+}
+.pub .year {
+  font-variant-numeric: tabular-nums;
+  font-size: 13.5px;
+  color: var(--fg-soft);
+}
+.pub .title {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 500;
+  font-size: 19px;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+  font-variation-settings: "opsz" 48, "SOFT" 40;
+}
+.pub .title a { color: var(--fg); text-decoration: none; }
+.pub .title a:hover { color: var(--accent); }
+.pub .venue {
+  font-size: 13.5px;
+  color: var(--fg-soft);
+  margin-top: 4px;
+}
+.pub .tag {
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+/* =========================================================
+   CONTACT
+========================================================== */
+.contact .wrap { max-width: 760px; }
+.contact p {
+  font-size: 17px;
+  color: var(--fg-soft);
+  margin: 0 0 28px;
+  max-width: 56ch;
+}
+.contact .links {
+  display: flex;
+  gap: 16px;
+  font-size: 14px;
+}
+.contact .links a {
+  color: var(--accent);
+  text-decoration: none;
+  padding: 10px 18px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.contact .links a:hover {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+/* =========================================================
+   FOOTER
+========================================================== */
+footer.site {
+  padding: 22px 44px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================== */
+@media (max-width: 820px) {
+  nav.top { padding: 20px 24px; }
+  nav.top ul { gap: 16px; font-size: 12px; }
+  .hero { padding: 96px 24px 76px; }
+  .hero .scroll-hint { left: 24px; }
+  section.block { padding: 80px 24px; }
+  .about .text { padding: 80px 24px 80px 40px; }
+  .about .photo figcaption { padding-left: 24px; }
+  .pub { grid-template-columns: 56px 1fr; gap: 18px; }
+  .pub .tag { grid-column: 2; justify-self: start; margin-top: 6px; }
+  h2.section-title { font-size: 36px; }
+  footer.site { padding: 18px 24px; }
+}
+@media (max-width: 640px) {
+  section.about .wrap { grid-template-columns: minmax(0, 1fr); }
+  .about .text { grid-column: 1; grid-row: 1; padding: 80px 24px 56px; }
+  .about .photo { grid-column: 1; grid-row: 2; aspect-ratio: 4 / 5; }
+  .about .photo img { object-position: center 35%; }
+}
+</style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <nav class="top">
+      <ul>
+        <li><a href="#about">About me</a></li>
+        <li><a href="#work">Writing / Speaking</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="inner">
+      <h1 class="name"><span class="hi-big">Hi!</span><span class="im-name">I'm Maximilian Gahntz</span></h1>
+      <p class="tagline">I work on how Europe and the world should govern tech, and AI in particular, so that its benefits are shared and that power over technology doesn't concentrate in the hands of a few.</p>
+    </div>
+    <span class="scroll-hint">Scroll ↓</span>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="block about bg-cream" id="about">
+    <div class="wrap">
+      <figure class="photo">
+        <img src="portrait-mg.jpg" alt="Portrait of Maximilian Gahntz">
+        <figcaption>Photo: Nicholas Czichi-Welzer</figcaption>
+      </figure>
+      <div class="text">
+        <h2 class="section-title">About me</h2>
+        <p>I work on tech and AI policy — trying to make sure technology serves the public interest, and that AI doesn't end up being controlled by a handful of companies.</p>
+        <p>My work lives at the intersection of research, policy, and philanthropy, and a lot of it involves translating between worlds that don't naturally talk to each other: technical communities and policymakers, civil society and industry, Brussels and Washington, D.C.</p>
+        <p>I'm currently a Senior Advisor at the Economic Democracy Fund, a new initiative working to reclaim democratic control over vital tech infrastructures. I'm also a Senior Fellow at Mozilla, a board member of D64 — Center for Digital Progress, a Non-Resident Fellow with the Global Public Policy Institute (GPPi), and a member of the European Commission's Frontier AI Expert Forum. Previously, I spent five years building up Mozilla's global work on AI policy, shaping key parts of the EU AI Act, convening unlikely coalitions, and working across Europe, the US, and the UK. Before joining Mozilla, I worked at what is now the European Commission's AI Office as a Fellow with the Mercator Fellowship on International Affairs.</p>
+        <p>I'm based in Berlin and hold degrees in Public Policy and Administration from Columbia University, Sciences Po Paris, and the University of Konstanz.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WRITING / SPEAKING -->
+  <section class="block bg-warm-white" id="work">
+    <div class="wrap">
+      <h2 class="section-title">Writing / Speaking</h2>
+      <p class="section-intro">A selection of my writing, research, and public speaking on AI and tech policy.</p>
+
+      <details class="cat">
+        <summary>
+          <h3>Opinion and Analysis</h3>
+          <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="cat-body">
+          <div class="pub"><div class="year">2026</div><div><div class="title"><a href="https://gppi.net/2026/08/20/what-the-american-ai-exports-program-means-for-europe">What the American AI Exports Program Means for Europe</a></div><div class="venue">Global Public Policy Institute (GPPi)</div></div></div>
+          <div class="pub"><div class="year">2026</div><div><div class="title"><a href="https://background.tagesspiegel.de/digitalisierung-und-ki/briefing/europas-richtungsentscheidung-bei-ki">Offen oder abgehängt: Europas Richtungsentscheidung bei KI</a></div><div class="venue">Tagesspiegel Background</div></div><div class="tag">Co-author</div></div>
+          <div class="pub"><div class="year">2025</div><div><div class="title"><a href="https://huggingface.co/blog/yjernite/eu-act-os-guideai">What Open-Source Developers Need to Know about the EU AI Act's Rules for GPAI Models</a></div><div class="venue">Hugging Face</div></div><div class="tag">Co-author</div></div>
+          <div class="pub"><div class="year">2025</div><div><div class="title"><a href="https://euobserver.com/digital/ara7bbd63b">Gutting AI transparency in the name of deregulation will not help Europe</a></div><div class="venue">EUobserver</div></div><div class="tag">Co-author</div></div>
+          <div class="pub"><div class="year">2025</div><div><div class="title"><a href="https://en.arcep.fr/uploads/tx_gspublication/ARCEP-RA2025-TOME_3-UK-Norme_A.pdf">Openness in AI: Progress for all of us, not just some of us</a></div><div class="venue">ARCEP</div></div><div class="tag">Co-author</div></div>
+          <div class="pub"><div class="year">2024</div><div><div class="title"><a href="https://www.techpolicy.press/how-the-eu-ai-act-can-increase-transparency-around-ai-training-data/">How the EU AI Act Can Increase Transparency Around AI Training Data</a></div><div class="venue">Tech Policy Press</div></div><div class="tag">Co-author</div></div>
+          <div class="pub"><div class="year">2023</div><div><div class="title"><a href="https://www.techpolicy.press/ais-content-moderation-moment-is-here/">AI's Content Moderation Moment Is Here</a></div><div class="venue">Tech Policy Press</div></div></div>
+          <div class="pub"><div class="year">2023</div><div><div class="title"><a href="https://verfassungsblog.de/action-recommended/">Action Recommended: How the Digital Services Act Addresses Platform Recommender Systems</a></div><div class="venue">Verfassungsblog</div></div><div class="tag">Co-author</div></div>
+          <div class="pub"><div class="year">2023</div><div><div class="title"><a href="https://www.techpolicy.press/moving-toward-more-responsible-recommendations/">Moving Toward More Responsible Recommendations</a></div><div class="venue">Tech Policy Press</div></div></div>
+          <div class="pub"><div class="year">2023</div><div><div class="title"><a href="https://www.mozillafoundation.org/en/blog/openness-ai-fostering-innovation-accountability-in-the-eus-ai-act/">Openness &amp; AI: Fostering Innovation &amp; Accountability in the EU's AI Act</a></div><div class="venue">Mozilla Foundation</div></div><div class="tag">Co-author</div></div>
+          <div class="pub"><div class="year">2022</div><div><div class="title"><a href="https://www.mozillafoundation.org/en/blog/the-long-road-to-redress-mozillas-comments-on-the-eus-proposal-for-an-ai-liability-directive/">The Long Road to Redress: Mozilla's Comments on the EU's Proposal for an AI Liability Directive</a></div><div class="venue">Mozilla Foundation</div></div><div class="tag">Co-author</div></div>
+          <div class="pub"><div class="year">2022</div><div><div class="title"><a href="https://www.mozillafoundation.org/en/blog/how-the-eu-can-take-on-general-purpose-ai-in-the-ai-act/">How the EU Can Take on General-Purpose AI in the AI Act</a></div><div class="venue">Mozilla Foundation</div></div><div class="tag">Co-author</div></div>
+          <div class="pub"><div class="year">2022</div><div><div class="title"><a href="https://www.mozillafoundation.org/en/blog/how-to-make-sure-the-eu-ai-act-delivers-on-its-promise/">How to Make Sure the EU's AI Act Delivers on its Promise</a></div><div class="venue">Mozilla Foundation</div></div><div class="tag">Co-author</div></div>
+        </div>
+      </details>
+
+      <details class="cat">
+        <summary>
+          <h3>Reports, Briefs and Papers</h3>
+          <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="cat-body">
+          <div class="pub"><div class="year">2026</div><div><div class="title"><a href="https://dl.acm.org/doi/10.1145/3805689.3806719">Reimagining Open Source and Openness in AI: Co-Creating Responsible Technological Futures</a></div><div class="venue">ACM FAccT</div></div><div class="tag">Co-author</div></div>
+          <div class="pub"><div class="year">2026</div><div><div class="title"><a href="https://dl.acm.org/doi/10.1145/3805689.3806755">Quality Assessment of Public Summary of Training Content for GPAI models required by AI Act Article 53(1)(d)</a></div><div class="venue">ACM FAccT</div></div><div class="tag">Co-author</div></div>
+          <div class="pub"><div class="year">2025</div><div><div class="title"><a href="https://arxiv.org/abs/2501.08365">Towards Best Practices for Open Datasets for LLM Training</a></div><div class="venue">arXiv</div></div><div class="tag">Co-author</div></div>
+          <div class="pub"><div class="year">2024</div><div><div class="title"><a href="https://www.t20brasil.org/media/documentos/arquivos/TF05_ST_05_Democratizing_AI_fo66d5d70141505.pdf">Democratizing AI For The Public Good: Key Concepts And Recommendations</a></div><div class="venue">T20 Brazil</div></div><div class="tag">Co-author</div></div>
+          <div class="pub"><div class="year">2024</div><div><div class="title"><a href="https://openfuture.eu/wp-content/uploads/2024/06/240618AIAtransparency_template_requirements-2.pdf">Sufficiently detailed? A proposal for implementing the AI Act's training data transparency requirements for GPAI</a></div><div class="venue">Open Future</div></div><div class="tag">Co-author</div></div>
+          <div class="pub"><div class="year">2023</div><div><div class="title"><a href="https://ainowinstitute.org/wp-content/uploads/2023/04/GPAI-Policy-Brief.pdf">Five considerations to guide the regulation of General Purpose AI in the EU's AI Act</a></div><div class="venue">AI Now Institute</div></div><div class="tag">Co-author</div></div>
+          <div class="pub"><div class="year">2022</div><div><div class="title"><a href="https://www.mozillafoundation.org/en/research/library/towards-responsible-recommending/towards-responsible-recommending-report/">Towards Responsible Recommending</a></div><div class="venue">Mozilla Foundation</div></div></div>
+        </div>
+      </details>
+
+      <details class="cat">
+        <summary>
+          <h3>Public Speaking</h3>
+          <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="cat-body">
+          <p class="cat-note">A selection of speaking engagements for which a public recording is available.</p>
+          <div class="pub"><div class="year">2026</div><div><div class="title"><a href="https://www.youtube.com/live/EsTQ5PWGzDY?t=1131">Trustworthy AI Forum: Wachstum. Wettbewerbsfähigkeit. Souveränität</a></div><div class="venue">Der Tagesspiegel</div></div><div class="tag">Speaker</div></div>
+          <div class="pub"><div class="year">2025</div><div><div class="title"><a href="https://www.youtube.com/live/YeinE9dAZLI?t=2800">Winner takes all – Wie sieht fairer Wettbewerb in der KI-Branche aus?</a></div><div class="venue">Der Tagesspiegel</div></div><div class="tag">Speaker</div></div>
+          <div class="pub"><div class="year">2025</div><div><div class="title"><a href="https://www.youtube.com/watch?v=q6e-plthjjg">Towards a Safe Harbour for Public Interest AI Research</a></div><div class="venue">CPDP</div></div><div class="tag">Moderator</div></div>
+          <div class="pub"><div class="year">2024</div><div><div class="title"><a href="https://www.youtube.com/watch?v=fhVmYclmPs8">Nach der Lobbyschlacht ist vor der Umsetzung</a></div><div class="venue">re:publica</div></div><div class="tag">Speaker</div></div>
+          <div class="pub"><div class="year">2024</div><div><div class="title"><a href="https://www.youtube.com/watch?v=Ef2y-x4tbQA">Will the Digital Services Act Promote Safer and Healthier Algorithmic Rankings?</a></div><div class="venue">CPDP</div></div><div class="tag">Moderator</div></div>
+          <div class="pub"><div class="year">2023</div><div><div class="title"><a href="https://www.zvki.de/ki-navigator/unsere-inhalte/trust-issues-folge-6">Trust Issues: Folge 6 – Lässt sich Vertrauen regeln, Maximilian Gahntz?</a></div><div class="venue">ZVKI</div></div><div class="tag">Speaker</div></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="block contact bg-cream" id="contact">
+    <div class="wrap">
+      <h2 class="section-title">Contact</h2>
+      <p>Get in touch if you'd like to talk or collaborate.</p>
+      <div class="links">
+        <a href="#" id="email-link">Email</a>
+        <a href="https://www.linkedin.com/in/gahntz/">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site">
+    <span>© 2026 Maximilian Gahntz</span>
+  </footer>
+
+  <script>
+    // The address is put together here so that bots scanning the page can't read it.
+    (function () {
+      var user = 'm.gahntz';
+      var domain = 'proton.me';
+      document.getElementById('email-link').href = 'mailto:' + user + '@' + domain;
+    })();
+  </script>
+
+</body>
+</html>
